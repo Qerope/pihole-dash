@@ -14,3 +14,11 @@ services:
     ports:
       - '3000:3000'
     restart: unless-stopped
+
+  pihole-exporter:
+    image: ekofr/pihole-exporter
+    environment:
+      PIHOLE_HOSTNAME: 192.168.1.2
+      PIHOLE_API_TOKEN: ${PIHOLE_API_TOKEN}
+      PORT: '9617'
+    restart: unless-stopped
