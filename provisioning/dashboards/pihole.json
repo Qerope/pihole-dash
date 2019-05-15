@@ -1,0 +1,20 @@
+{
+  "title": "Pi-hole",
+  "uid": "pihole",
+  "schemaVersion": 18,
+  "refresh": "1m",
+  "panels": [
+    {
+      "type": "stat", "title": "Queries today", "gridPos": {"x": 0, "y": 0, "w": 6, "h": 4},
+      "targets": [{"expr": "pihole_dns_queries_today"}]
+    },
+    {
+      "type": "stat", "title": "Blocked today", "gridPos": {"x": 6, "y": 0, "w": 6, "h": 4},
+      "targets": [{"expr": "pihole_ads_blocked_today"}]
+    },
+    {
+      "type": "gauge", "title": "Percent blocked", "gridPos": {"x": 12, "y": 0, "w": 6, "h": 4},
+      "targets": [{"expr": "pihole_ads_percentage_today"}]
+    }
+  ]
+}
