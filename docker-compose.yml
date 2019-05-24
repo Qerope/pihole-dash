@@ -2,7 +2,7 @@ version: '3'
 
 services:
   prometheus:
-    image: prom/prometheus
+    image: prom/prometheus:v2.10.0
     volumes:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
     ports:
@@ -10,7 +10,7 @@ services:
     restart: unless-stopped
 
   grafana:
-    image: grafana/grafana
+    image: grafana/grafana:6.2.5
     volumes:
       - ./provisioning:/etc/grafana/provisioning:ro
     ports:
@@ -18,7 +18,7 @@ services:
     restart: unless-stopped
 
   pihole-exporter:
-    image: ekofr/pihole-exporter
+    image: ekofr/pihole-exporter:v0.0.5
     environment:
       PIHOLE_HOSTNAME: 192.168.1.2
       PIHOLE_API_TOKEN: ${PIHOLE_API_TOKEN}
