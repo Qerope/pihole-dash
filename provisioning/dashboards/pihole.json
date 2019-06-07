@@ -15,6 +15,10 @@
     {
       "type": "gauge", "title": "Percent blocked", "gridPos": {"x": 12, "y": 0, "w": 6, "h": 4},
       "targets": [{"expr": "pihole_ads_percentage_today"}]
+    },
+    {
+      "type": "table", "title": "Top blocked domains", "gridPos": {"x": 0, "y": 4, "w": 12, "h": 8},
+      "targets": [{"expr": "topk(10, pihole_top_ads)", "format": "table", "instant": true}]
     }
   ]
 }
