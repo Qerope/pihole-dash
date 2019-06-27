@@ -5,6 +5,10 @@ services:
     image: prom/prometheus:v2.10.0
     volumes:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prom-data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.retention.time=90d'
     ports:
       - '9090:9090'
     restart: unless-stopped
@@ -13,6 +17,7 @@ services:
     image: grafana/grafana:6.2.5
     volumes:
       - ./provisioning:/etc/grafana/provisioning:ro
+      - grafana-data:/var/lib/grafana
     ports:
       - '3000:3000'
     restart: unless-stopped
@@ -24,3 +29,7 @@ services:
       PIHOLE_API_TOKEN: ${PIHOLE_API_TOKEN}
       PORT: '9617'
     restart: unless-stopped
+
+volumes:
+  prom-data:
+  grafana-data:
