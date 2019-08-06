@@ -1,0 +1,10 @@
+groups:
+  - name: pihole
+    rules:
+      - alert: PiholeDown
+        expr: up{job="pihole"} == 0
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Pi-hole exporter has been down for 5 minutes"
